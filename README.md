@@ -125,3 +125,68 @@ curl http://localhost:9100/metrics
 curl -s localhost:9100/metrics | grep cpu
 ```
 
+# Grafana
+
+`sudo apt-get install -y apt-transport-https software-properties-common`
+
+`wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -`
+
+```
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+```
+
+```
+sudo apt-get update
+sudo apt-get -y install grafana
+```
+
+`sudo systemctl enable grafana-server`
+
+`sudo systemctl start grafana-server`
+
+`sudo systemctl status grafana-server`
+
+# Reload Prometheus Config
+
+`curl -X POST -u admin:admin http://localhost:9090/-/reload`
+
+# Optional - Add all data sources
+
+`sudo nano /etc/grafana/provisioning/datasources/datasources.yaml`
+
+```
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    url: http://localhost:9090
+    isDefault: true
+```
+
+`sudo systemctl restart grafana-server`
+
+# Update Prometheus Targets
+
+`sudo nano /etc/prometheus/prometheus.yml`
+
+```
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+  - job_name: "node"
+    static_configs:
+      - targets: ["localhost:9100"]
+  - job_name: "nvidia"
+    static_configs:
+      - targets: ["localhost:9400"]
+
+```
+
+Check config is valid:
+
+`promtool check config /etc/prometheus/prometheus.yml`
+
+Use POST request to update config:
+
+`curl -X POST http://localhost:9090/-/reload`
