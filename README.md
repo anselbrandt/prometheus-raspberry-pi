@@ -129,7 +129,8 @@ curl -s localhost:9100/metrics | grep cpu
 
 `sudo apt-get install -y apt-transport-https software-properties-common`
 
-`wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -`
+`sudo mkdir -p /etc/apt/keyrings/
+wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null`
 
 ```
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
