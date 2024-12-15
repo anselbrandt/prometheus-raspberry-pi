@@ -10,13 +10,13 @@ sudo useradd \
 ```
 
 ```
-wget https://github.com/prometheus/prometheus/releases/download/v2.53.1/prometheus-2.53.1.linux-arm64.tar.gz
+wget https://github.com/prometheus/prometheus/releases/download/v3.0.1/prometheus-3.0.1.linux-arm64.tar.gz
 
-tar -xvf prometheus-2.53.1.linux-arm64.tar.gz
+tar -xvf prometheus-3.0.1.linux-arm64.tar.gz
 
 sudo mkdir -p /data /etc/prometheus
 
-cd prometheus-2.53.1.linux-arm64
+cd prometheus-3.0.1.linux-arm64
 
 sudo mv prometheus promtool /usr/local/bin/
 
