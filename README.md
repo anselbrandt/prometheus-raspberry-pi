@@ -191,3 +191,21 @@ Check config is valid:
 Use POST request to update config:
 
 `curl -X POST http://localhost:9090/-/reload`
+
+Update Grafana config
+
+/etc/grafana/grafana.ini
+
+# The full public facing url you use in browser, used for redirects and emails
+# If you use reverse proxy and sub path specify full url (with sub path)
+;root_url = %(protocol)s://%(domain)s:%(http_port)s/
+root_url = https://<hostname>.anselbrandt.net/grafana
+
+# Serve Grafana from subpath specified in `root_url` setting. By default it is set to `false` for compatibility reasons.
+serve_from_sub_path = true
+
+### Restart Grafana
+
+sudo systemctl stop grafana-server
+
+sudo systemctl start grafana-server
