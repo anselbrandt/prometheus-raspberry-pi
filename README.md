@@ -10,13 +10,13 @@ sudo useradd \
 ```
 
 ```
-wget https://github.com/prometheus/prometheus/releases/download/v3.0.1/prometheus-3.0.1.linux-arm64.tar.gz
+wget https://github.com/prometheus/prometheus/releases/download/v3.4.0/prometheus-3.4.0.linux-arm64.tar.gz
 
-tar -xvf prometheus-3.0.1.linux-arm64.tar.gz
+tar -xvf prometheus-3.4.0.linux-arm64.tar.gz
 
 sudo mkdir -p /data /etc/prometheus
 
-cd prometheus-3.0.1.linux-arm64
+cd prometheus-3.4.0.linux-arm64
 
 sudo mv prometheus promtool /usr/local/bin/
 
@@ -76,12 +76,12 @@ sudo useradd \
 ```
 
 ```
-wget https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-arm64.tar.gz
+wget https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-arm64.tar.gz
 
-tar -xvf node_exporter-1.8.2.linux-arm64.tar.gz
+tar -xvf node_exporter-1.9.1.linux-arm64.tar.gz
 
 sudo mv \
-  node_exporter-1.8.2.linux-arm64/node_exporter \
+  node_exporter-1.9.1.linux-arm64/node_exporter \
   /usr/local/bin/
 
 node_exporter --version
