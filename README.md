@@ -20,8 +20,6 @@ cd prometheus-3.4.0.linux-arm64
 
 sudo mv prometheus promtool /usr/local/bin/
 
-sudo mv consoles/ console_libraries/ /etc/prometheus/
-
 sudo mv prometheus.yml /etc/prometheus/prometheus.yml
 
 sudo chown -R prometheus:prometheus /etc/prometheus/ /data/
